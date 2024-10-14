@@ -1,5 +1,4 @@
 {
-  "homepage": "https://hentik1.github.io/wordflow",
   "name": "wordflow",
   "private": true,
   "version": "0.0.0",
@@ -9,9 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "serve": "node index.js",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "serve": "node index.js"
   },
   "dependencies": {
     "gh-pages": "^6.2.0",
