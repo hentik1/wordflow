@@ -6,7 +6,7 @@ function useFetchWords() {
   useEffect(() => {
     const fetchFileData = async () => {
       try {
-        const response = await fetch("/100k_words.txt");
+        const response = await fetch("/wordflow/100k_words.txt");
         if (!response.ok) {
           throw new Error("Network response not ok");
         }
