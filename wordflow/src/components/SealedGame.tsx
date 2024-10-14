@@ -1,4 +1,4 @@
-import { SetStateAction, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SealedProps, Gamemode } from "../interface";
 
 import ValidationAlert from "./ValidationAlert";
@@ -9,11 +9,9 @@ import Keyboard from "./Keyboard";
 
 function SealedGame({
   character,
-  appVisible,
   setAppVisible,
   gamemode,
   time,
-  setTime,
 }: SealedProps) {
   const [input, setInput] = useState<string>(character);
   const [wordlist, setWordList] = useState<string[]>([]);
@@ -65,7 +63,7 @@ function SealedGame({
     }
   };
 
-  const { secondsLeft, start, stop } = useCountdown();
+  const { secondsLeft, start } = useCountdown();
 
   useEffect(() => start(time), []);
 

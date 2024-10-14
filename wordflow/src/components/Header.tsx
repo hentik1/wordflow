@@ -1,4 +1,3 @@
-import Logo from "../assets/Logo";
 import { optionsData } from "../data";
 import CrossIcon from "../assets/CrossIcon";
 import { HeaderProps } from "../interface";

@@ -1,4 +1,3 @@
-import Keyboard from "./Keyboard";
 
 function Settings() {
   return (
