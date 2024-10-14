@@ -6,7 +6,6 @@ import useFetchWords from "../hooks/useFetchWords";
 import useCountdown from "../hooks/useCountdown";
 import CountdownBar from "./CountdownBar";
 import Keyboard from "./Keyboard";
-import Settime1 from "./devtools/settime1";
 
 function SealedGame({
   character,
