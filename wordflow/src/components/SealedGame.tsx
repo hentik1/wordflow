@@ -30,7 +30,6 @@ function SealedGame({
   const handleRetry = () => {
     start(time);
     setInput(character);
-    autoFocusInput();
     setScore(0);
     setWordList([]);
 
@@ -42,14 +41,8 @@ function SealedGame({
       setToggleAlert(true);
     }, 10);
     setToggleAlert(false);
-    autoFocusInput();
   };
 
-  const autoFocusInput = () => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  };
 
   const dynamicInput = (value: string) => {
     if (gamemode !== Gamemode.LINKED) {
@@ -97,7 +90,7 @@ function SealedGame({
         <input
           ref={inputRef}
           type="text"
-          autoFocus
+          readOnly
           value={input}
           className="select-none outline-none text-center text-2xl w-full text-white bg-neutral-900"
           onChange={(e) => dynamicInput(e.target.value.toUpperCase())}
@@ -116,7 +109,6 @@ function SealedGame({
         ) : null}
 
         <Keyboard
-          autoFocusInput={autoFocusInput}
           input={input}
           setInput={setInput}
           handleSubmit={handleSubmit}

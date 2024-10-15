@@ -7,11 +7,9 @@ function Keyboard({
   input,
   setInput,
   handleSubmit,
-  autoFocusInput,
 }: KeyboardProps) {
   const handlePress = (s: string) => {
     setInput(input + s);
-    autoFocusInput();
   };
 
   const handleAction = (key: string) => {
@@ -22,7 +20,6 @@ function Keyboard({
     } else if (key === "del") {
       setInput(input.slice(0, input.length - 1));
     }
-    autoFocusInput();
   };
 
   return (

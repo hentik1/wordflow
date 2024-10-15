@@ -56,5 +56,4 @@ export interface KeyboardProps {
   input: string;
   setInput: React.Dispatch<React.SetStateAction<string>>;
   handleSubmit: () => void;
-  autoFocusInput: () => void;
 }
