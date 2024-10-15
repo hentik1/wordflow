@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 
 function useFetchWords() {
   const [wordData, setWordData] = useState<string[]>([]);
-  // Fetch the txt file /public/100k_words.txt and put it into wordData
+  // Fetch the txt file in public/100k_words.txt and put it into wordData
   useEffect(() => {
     const fetchFileData = async () => {
       try {
-        const response = await fetch("100k_words.txt");
+        const filePath = `${import.meta.env.BASE_URL}100k_words.txt`;
+        const response = await fetch(filePath);
         if (!response.ok) {
           throw new Error("Network response not ok");
         }
