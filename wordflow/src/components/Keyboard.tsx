@@ -1,13 +1,9 @@
-import { keyboardSequence } from "../data";
+import { keyboardLayout } from "../data";
 import BackspaceIcon from "../assets/BackspaceIcon";
 import EnterIcon from "../assets/EnterIcon";
 import { KeyboardProps } from "../interface";
 
-function Keyboard({
-  input,
-  setInput,
-  handleSubmit,
-}: KeyboardProps) {
+function Keyboard({ input, setInput, handleSubmit }: KeyboardProps) {
   const handlePress = (s: string) => {
     setInput(input + s);
   };
@@ -23,36 +19,42 @@ function Keyboard({
   };
 
   return (
-    <div className="absolute top-3/4">
+    <div
+      className={
+        localStorage.getItem("keyboard") === "true"
+          ? "absolute top-3/4"
+          : "hidden"
+      }
+    >
       <div className="flex flex-row justify-center w-screen">
-        {keyboardSequence[0].split("").map((char, _) => (
+        {keyboardLayout[0].split("").map((char, _) => (
           <div
             key={char}
             onClick={() => handlePress(char)}
-            className="p-2 bg-gray-500 m-0.5 text-center w-7 cursor-pointer rounded"
+            className="p-2 bg-gray-500 m-0.5 text-center w-9 cursor-pointer rounded"
           >
             {char}
           </div>
         ))}
       </div>
       <div className="flex flex-row justify-center w-screen">
-        {keyboardSequence[1].split("").map((char, _) => (
+        {keyboardLayout[1].split("").map((char, _) => (
           <div
             key={char}
             onClick={() => handlePress(char)}
-            className="p-2 bg-gray-500 m-0.5 text-center w-7 cursor-pointer rounded"
+            className="p-2 bg-gray-500 m-0.5 text-center w-9 cursor-pointer rounded"
           >
             {char}
           </div>
         ))}
       </div>
       <div className="flex flex-row justify-center w-screen">
-        {keyboardSequence[2].split("").map((char, _) =>
+        {keyboardLayout[2].split("").map((char, _) =>
           char === "1" ? (
             <div
               key={char}
               onClick={() => handleAction("enter")}
-              className="p-2 bg-gray-500 m-0.5 w-11 cursor-pointer rounded"
+              className="p-2 bg-gray-500 m-0.5 w-14 cursor-pointer rounded flex justify-center"
             >
               <EnterIcon />
             </div>
@@ -60,7 +62,7 @@ function Keyboard({
             <div
               key={char}
               onClick={() => handleAction("del")}
-              className="p-2 bg-gray-500 m-0.5 w-11 cursor-pointer rounded"
+              className="p-2 bg-gray-500 m-0.5 w-14 cursor-pointer rounded flex justify-center"
             >
               <BackspaceIcon />
             </div>
@@ -68,7 +70,7 @@ function Keyboard({
             <div
               key={char}
               onClick={() => handlePress(char)}
-              className="p-2 bg-gray-500 m-0.5 text-center w-7 cursor-pointer rounded"
+              className="p-2 bg-gray-500 m-0.5 text-center w-9 cursor-pointer rounded"
             >
               {char}
             </div>

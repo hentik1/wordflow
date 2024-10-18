@@ -6,8 +6,11 @@ import DefaultConfig from "./DefaultConfig";
 import SealedGame from "../components/SealedGame";
 import Header from "./Header";
 import ModeSelector from "./ModeSelector";
+import { updateLocalStorage } from "../util";
 
 function App() {
+  updateLocalStorage();
+
   const [character, setCharacter] = useState<string>("A");
   const [appVisible, setAppVisible] = useState<boolean>(true);
 

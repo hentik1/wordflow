@@ -10,7 +10,7 @@ import SprintIcon from "./assets/SprintIcon";
 import EnduranceIcon from "./assets/EnduranceIcon";
 
 export const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-export const keyboardSequence = ["QWERTYUIOP", "ASDFGHJKL", "1ZXCVBNM2"];
+export const keyboardLayout = ["QWERTYUIOP", "ASDFGHJKL", "1ZXCVBNM2"];
 
 export const alerts = {
   Length: "Word must have 4 or more letters",

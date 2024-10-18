@@ -24,7 +24,7 @@ function DefaultConfig({
     }
   };
 
-  const gamemodeIcons = [<SealedIcon />, <LinkedIcon />];
+  const gamemodeIcons = [<LinkedIcon />, <SealedIcon />];
 
   return (
     <div className="h-3/5 flex flex-col justify-start">

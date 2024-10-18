@@ -3,7 +3,7 @@ function BackspaceIcon() {
     <svg
       width="26px"
       height="26px"
-      viewBox="0 -0.5 25 25"
+      viewBox="4 3 17 17"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >

@@ -3,7 +3,7 @@ function EnterIcon() {
     <svg
       width="32px"
       height="26px"
-      viewBox="0 0 24 24"
+      viewBox="2 0 21 21"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >

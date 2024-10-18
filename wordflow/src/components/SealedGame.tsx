@@ -6,13 +6,9 @@ import useFetchWords from "../hooks/useFetchWords";
 import useCountdown from "../hooks/useCountdown";
 import CountdownBar from "./CountdownBar";
 import Keyboard from "./Keyboard";
+import { alphabet } from "../data";
 
-function SealedGame({
-  character,
-  setAppVisible,
-  gamemode,
-  time,
-}: SealedProps) {
+function SealedGame({ character, setAppVisible, gamemode, time }: SealedProps) {
   const [input, setInput] = useState<string>(character);
   const [wordlist, setWordList] = useState<string[]>([]);
   const [toggleAlert, setToggleAlert] = useState<boolean>(false);
@@ -43,19 +39,6 @@ function SealedGame({
     setToggleAlert(false);
   };
 
-
-  const dynamicInput = (value: string) => {
-    if (gamemode !== Gamemode.LINKED) {
-      if (input.length === 1 && value.length === 0) {
-        return;
-      } else {
-        setInput(value);
-      }
-    } else {
-      setInput(value);
-    }
-  };
-
   const { secondsLeft, start } = useCountdown();
 
   useEffect(() => start(time), []);
@@ -65,6 +48,25 @@ function SealedGame({
       setGameover(true);
     }
   }, [secondsLeft]);
+
+  useEffect(() => {
+    const handleKey = (event: KeyboardEvent) => {
+      let key = event.key;
+      if (key === "Backspace") {
+        setInput(input.slice(0, -1));
+      } else if (key === "Enter") {
+        handleSubmit();
+      } else if (alphabet.includes(key.toUpperCase())) {
+        setInput(() => input + key.toUpperCase());
+      }
+      console.log(key);
+    };
+
+    document.addEventListener("keydown", handleKey, true);
+    return () => {
+      document.removeEventListener("keydown", handleKey, true);
+    };
+  });
 
   return (
     <>
@@ -93,7 +95,7 @@ function SealedGame({
           readOnly
           value={input}
           className="select-none outline-none text-center text-2xl w-full text-white bg-neutral-900"
-          onChange={(e) => dynamicInput(e.target.value.toUpperCase())}
+          onChange={(e) => setInput(e.target.value.toUpperCase())}
         />
         {toggleAlert ? (
           <ValidationAlert
