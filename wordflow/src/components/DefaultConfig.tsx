@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { DefaultConfigProps, Gamemode } from "../interface";
+import { DefaultConfigProps, Gamemode, Times } from "../interface";
 import { timeData } from "../data";
 import LinkedIcon from "../assets/LinkedIcon";
 import SealedIcon from "../assets/SealedIcon";
@@ -24,7 +24,7 @@ function DefaultConfig({
     }
   };
 
-  const gamemodeIcons = [<LinkedIcon />, <SealedIcon />];
+  const gamemodeIcons = [<SealedIcon />, <LinkedIcon />];
 
   return (
     <div className="h-3/5 flex flex-col justify-start">
@@ -46,10 +46,16 @@ function DefaultConfig({
           </div>
         ))}
       </div>
-      <div className="flex flex-row justify-center">
+      <div
+        className={
+          gamemode === Gamemode.SEALED
+            ? "flex flex-row justify-center"
+            : "hidden"
+        }
+      >
         {timeData.map((item) => (
           <div
-            onClick={() => setTime(item.value as 60 | 360)}
+            onClick={() => setTime(item.value as Times)}
             key={item.key}
             className={`cursor-pointer m-4 p-2  rounded-xl text-xl flex flex-row justify-evenly w-28 border-2 bg-zinc-950 ${
               time === item.value
@@ -65,9 +71,7 @@ function DefaultConfig({
 
       <div
         className={
-          gamemode === Gamemode.SEALED
-            ? "flex flex-row items-center"
-            : "invisible"
+          gamemode === Gamemode.SEALED ? "flex flex-row items-center" : "hidden"
         }
       >
         <div

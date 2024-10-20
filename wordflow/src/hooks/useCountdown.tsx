@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 
 function useCountdown() {
-  const [secondsLeft, setSecondsLeft] = useState<number>(0);
+  const [secondsLeft, setSecondsLeft] = useState<number>(999);
 
   useEffect(() => {
     if (secondsLeft <= 0) return;
 
     const timeout = setTimeout(() => {
-      setSecondsLeft(secondsLeft - 0.01);
-    }, 10);
+      setSecondsLeft(secondsLeft - 0.1);
+    }, 100);
 
     return () => clearTimeout(timeout);
   }, [secondsLeft]);

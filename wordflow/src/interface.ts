@@ -1,20 +1,25 @@
-export interface SealedProps {
-  character: string;
-  appVisible: boolean;
-  setAppVisible: React.Dispatch<React.SetStateAction<boolean>>;
-  gamemode: string;
-  time: 60 | 360;
-  setTime: React.Dispatch<React.SetStateAction<60 | 360>>;
-}
-
 export enum Mode {
   DEFAULT = "DEFAULT",
   DAILY = "DAILY",
 }
 
 export enum Gamemode {
-  LINKED = "LINKED",
   SEALED = "SEALED",
+  LINKED = "LINKED",
+}
+
+export enum Times {
+  MIN_1 = 60,
+  MIN_5 = 300,
+}
+
+export interface SealedProps {
+  character: string;
+  appVisible: boolean;
+  setAppVisible: React.Dispatch<React.SetStateAction<boolean>>;
+  gamemode: string;
+  time: Times;
+  setTime: React.Dispatch<React.SetStateAction<Times>>;
 }
 
 export interface DefaultConfigProps {
@@ -22,8 +27,8 @@ export interface DefaultConfigProps {
   setCharacter: React.Dispatch<React.SetStateAction<string>>;
   gamemode: string;
   setGamemode: React.Dispatch<React.SetStateAction<Gamemode>>;
-  time: 60 | 360;
-  setTime: React.Dispatch<React.SetStateAction<60 | 360>>;
+  time: Times;
+  setTime: React.Dispatch<React.SetStateAction<Times>>;
 }
 
 export interface ValidationProps {
@@ -56,4 +61,10 @@ export interface KeyboardProps {
   input: string;
   setInput: React.Dispatch<React.SetStateAction<string>>;
   handleSubmit: () => void;
+}
+
+export interface GameoverProps {
+  score: number;
+  handleRetry: () => void;
+  handleQuit: () => void;
 }

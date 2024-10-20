@@ -1,23 +1,26 @@
 import { useEffect, useRef, useState } from "react";
-import { SealedProps, Gamemode } from "../interface";
+import { SealedProps } from "../interface";
 
-import ValidationAlert from "./ValidationAlert";
 import useFetchWords from "../hooks/useFetchWords";
 import useCountdown from "../hooks/useCountdown";
 import CountdownBar from "./CountdownBar";
 import Keyboard from "./Keyboard";
 import { alphabet } from "../data";
+import Gameover from "./Gameover";
+import SealedValidation from "./SealedValidation";
 
-function SealedGame({ character, setAppVisible, gamemode, time }: SealedProps) {
+function SealedGame({ character, setAppVisible, time }: SealedProps) {
   const [input, setInput] = useState<string>(character);
   const [wordlist, setWordList] = useState<string[]>([]);
   const [toggleAlert, setToggleAlert] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
-  const [gameover, setGameover] = useState<boolean>(false);
-
-  const inputRef = useRef<HTMLInputElement>(null);
+ 
 
   const { wordData } = useFetchWords();
+
+  const { secondsLeft, start } = useCountdown();
+
+  useEffect(() => start(time), []);
 
   const handleQuit = () => {
     setAppVisible(true);
@@ -28,8 +31,7 @@ function SealedGame({ character, setAppVisible, gamemode, time }: SealedProps) {
     setInput(character);
     setScore(0);
     setWordList([]);
-
-    setGameover(false);
+   
   };
 
   const handleSubmit = () => {
@@ -38,16 +40,6 @@ function SealedGame({ character, setAppVisible, gamemode, time }: SealedProps) {
     }, 10);
     setToggleAlert(false);
   };
-
-  const { secondsLeft, start } = useCountdown();
-
-  useEffect(() => start(time), []);
-
-  useEffect(() => {
-    if (secondsLeft < 0) {
-      setGameover(true);
-    }
-  }, [secondsLeft]);
 
   useEffect(() => {
     const handleKey = (event: KeyboardEvent) => {
@@ -70,7 +62,7 @@ function SealedGame({ character, setAppVisible, gamemode, time }: SealedProps) {
 
   return (
     <>
-      <div className="bg-neutral-900 flex flex-col w-svw h-svh justify-center items-center relative">
+      <div className="bg-neutral-900 flex flex-col w-svw h-svh justify-center items-center relative overflow-hidden">
         <CountdownBar secondsLeft={secondsLeft} time={time} />
         <div className="absolute top-0 flex flex-row w-full justify-evenly">
           <div>{score}</div>
@@ -80,8 +72,8 @@ function SealedGame({ character, setAppVisible, gamemode, time }: SealedProps) {
           {wordlist.sort().map((value, i) => (
             <div
               key={value}
-              className={`w-auto text-center ${
-                value === input ? "bg-green-300" : ""
+              className={`w-auto text-center m-0.5 ${
+                value === input ? "bg-green-800 rounded p-1" : ""
               }`}
             >
               {wordlist[i]}
@@ -90,15 +82,14 @@ function SealedGame({ character, setAppVisible, gamemode, time }: SealedProps) {
         </div>
 
         <input
-          ref={inputRef}
           type="text"
           readOnly
           value={input}
           className="select-none outline-none text-center text-2xl w-full text-white bg-neutral-900"
           onChange={(e) => setInput(e.target.value.toUpperCase())}
         />
-        {toggleAlert ? (
-          <ValidationAlert
+        {toggleAlert && (
+          <SealedValidation
             input={input}
             setInput={setInput}
             character={character}
@@ -108,7 +99,7 @@ function SealedGame({ character, setAppVisible, gamemode, time }: SealedProps) {
             score={score}
             setScore={setScore}
           />
-        ) : null}
+        )}
 
         <Keyboard
           input={input}
@@ -123,17 +114,13 @@ function SealedGame({ character, setAppVisible, gamemode, time }: SealedProps) {
         </div>
       </div>
 
-      <div
-        className={
-          gameover
-            ? "absolute left-0 top-0 bg-neutral-900 flex flex-col w-screen h-screen justify-center items-center z-50"
-            : "hidden"
-        }
-      >
-        Score: {score}
-        <div onClick={handleRetry}>Retry</div>
-        <div onClick={handleQuit}>Quit</div>
-      </div>
+      {secondsLeft <= 0 && (
+        <Gameover
+          score={score}
+          handleRetry={handleRetry}
+          handleQuit={handleQuit}
+        />
+      )}
     </>
   );
 }

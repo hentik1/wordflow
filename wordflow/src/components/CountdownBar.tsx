@@ -12,7 +12,7 @@ function CoundownBar({ secondsLeft, time }: CoundownBarProps) {
 
   return (
     <div
-      className={`border-t-4 absolute top-0 left-0`}
+      className={`border-t-4 absolute top-0 left-0 duration-100 ease-linear`}
       style={{
         width: `${(secondsLeft / time) * 100}%`,
         borderColor: getCountdownBarColor(secondsLeft, time),

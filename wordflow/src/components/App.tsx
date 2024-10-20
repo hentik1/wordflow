@@ -1,15 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-import { Gamemode, Mode } from "../interface";
+import { Gamemode, Mode, Times } from "../interface";
 import { optionsData } from "../data";
 import DefaultConfig from "./DefaultConfig";
 import SealedGame from "../components/SealedGame";
 import Header from "./Header";
 import ModeSelector from "./ModeSelector";
 import { updateLocalStorage } from "../util";
+import LinkedGame from "./LinkedGame";
 
 function App() {
-  updateLocalStorage();
+  useEffect(() => {
+    updateLocalStorage();
+  }, []);
 
   const [character, setCharacter] = useState<string>("A");
   const [appVisible, setAppVisible] = useState<boolean>(true);
@@ -22,7 +25,7 @@ function App() {
 
   // Sealed Linked
   const [gamemode, setGamemode] = useState<Gamemode>(Gamemode.SEALED);
-  const [time, setTime] = useState<60 | 360>(60);
+  const [time, setTime] = useState<Times>(Times.MIN_1);
 
   const handleStart = () => {
     if (gamemode === Gamemode.SEALED) {
@@ -66,7 +69,7 @@ function App() {
         </div>
       </div>
 
-      {appVisible === false && gamemode === Gamemode.SEALED ? (
+      {!appVisible && gamemode === Gamemode.SEALED ? (
         <SealedGame
           character={character}
           appVisible={false}
@@ -76,6 +79,8 @@ function App() {
           setTime={setTime}
         />
       ) : null}
+
+      {!appVisible && gamemode === Gamemode.LINKED ? <LinkedGame /> : null}
 
       {toggledOption !== null && optionsData[toggledOption].component}
     </>

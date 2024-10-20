@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ValidationProps } from "../interface";
 import { alerts } from "../data";
 
-function ValidationAlert({
+function SealedValidation({
   input,
   setInput,
   character,
@@ -91,7 +91,7 @@ function ValidationAlert({
 
   return (
     <div
-      className={`absolute top-40 bg-black p-2 rounded ${
+      className={`absolute top-44 bg-black p-2 rounded ${
         alertVisible ? "" : "hidden"
       }`}
     >
@@ -100,4 +100,4 @@ function ValidationAlert({
   );
 }
 
-export default ValidationAlert;
+export default SealedValidation;

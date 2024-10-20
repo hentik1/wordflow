@@ -48,13 +48,13 @@ export const optionsData = [
 
 export const timeData = [
   {
-    key: "1minute",
+    key: "1min",
     value: 60,
     icon: <SprintIcon />,
     view: "1:00",
   },
   {
-    key: "5minute",
+    key: "5min",
     value: 300,
     icon: <EnduranceIcon />,
     view: "5:00",
