@@ -1,7 +1,7 @@
 import { CoundownBarProps } from "../interface";
 
 function CoundownBar({ secondsLeft, time }: CoundownBarProps) {
-  const getCountdownBarColor = (secondsLeft: number, time: number) => {
+  const countdownBarColor = (secondsLeft: number, time: number) => {
     if ((secondsLeft / time) * 100 > 50) {
       return "green";
     } else if ((secondsLeft / time) * 100 > 25) {
@@ -11,13 +11,23 @@ function CoundownBar({ secondsLeft, time }: CoundownBarProps) {
   };
 
   return (
-    <div
-      className={`border-t-4 absolute top-0 left-0 duration-100 ease-linear`}
-      style={{
-        width: `${(secondsLeft / time) * 100}%`,
-        borderColor: getCountdownBarColor(secondsLeft, time),
-      }}
-    ></div>
+    <>
+      {localStorage.getItem("visualclock") === "true" ? (
+        <div
+          className={
+            "border-t-4 absolute top-0 left-0 duration-100 ease-linear"
+          }
+          style={{
+            width: `${(secondsLeft / time) * 100}%`,
+            borderColor: countdownBarColor(secondsLeft, time),
+          }}
+        ></div>
+      ) : (
+        <div className={"absolute top-0 left-0 duration-100 ease-linear p-2"}>
+          {secondsLeft.toFixed(1)}
+        </div>
+      )}
+    </>
   );
 }
 

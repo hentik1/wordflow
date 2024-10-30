@@ -31,7 +31,7 @@ function Keyboard({ input, setInput, handleSubmit }: KeyboardProps) {
           <div
             key={char}
             onClick={() => handlePress(char)}
-            className="p-2 bg-gray-500 m-0.5 text-center w-9 cursor-pointer rounded"
+            className="p-2 bg-gray-500 m-0.5 text-center h-12 w-9 cursor-pointer rounded flex justify-center items-center text-xl"
           >
             {char}
           </div>
@@ -42,7 +42,7 @@ function Keyboard({ input, setInput, handleSubmit }: KeyboardProps) {
           <div
             key={char}
             onClick={() => handlePress(char)}
-            className="p-2 bg-gray-500 m-0.5 text-center w-9 cursor-pointer rounded"
+            className="p-2 bg-gray-500 m-0.5 text-center h-12 w-9 cursor-pointer rounded flex justify-center items-center text-xl"
           >
             {char}
           </div>
@@ -54,7 +54,7 @@ function Keyboard({ input, setInput, handleSubmit }: KeyboardProps) {
             <div
               key={char}
               onClick={() => handleAction("enter")}
-              className="p-2 bg-gray-500 m-0.5 w-14 cursor-pointer rounded flex justify-center"
+              className="p-2 bg-gray-500 m-0.5 h-12 w-14 cursor-pointer rounded flex justify-center items-center"
             >
               <EnterIcon />
             </div>
@@ -62,7 +62,7 @@ function Keyboard({ input, setInput, handleSubmit }: KeyboardProps) {
             <div
               key={char}
               onClick={() => handleAction("del")}
-              className="p-2 bg-gray-500 m-0.5 w-14 cursor-pointer rounded flex justify-center"
+              className="p-2 bg-gray-500 m-0.5 w-14 cursor-pointer rounded flex justify-center items-center"
             >
               <BackspaceIcon />
             </div>
@@ -70,7 +70,7 @@ function Keyboard({ input, setInput, handleSubmit }: KeyboardProps) {
             <div
               key={char}
               onClick={() => handlePress(char)}
-              className="p-2 bg-gray-500 m-0.5 text-center w-9 cursor-pointer rounded"
+              className="p-2 bg-gray-500 m-0.5 text-center w-9 cursor-pointer rounded flex justify-center items-center text-xl"
             >
               {char}
             </div>

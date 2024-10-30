@@ -8,6 +8,7 @@ import QuestionIcon from "./assets/QuestionIcon";
 import SettingsIcon from "./assets/SettingsIcon";
 import SprintIcon from "./assets/SprintIcon";
 import EnduranceIcon from "./assets/EnduranceIcon";
+import { Times } from "./interface";
 
 export const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 export const keyboardLayout = ["QWERTYUIOP", "ASDFGHJKL", "1ZXCVBNM2"];
@@ -49,13 +50,13 @@ export const optionsData = [
 export const timeData = [
   {
     key: "1min",
-    value: 60,
+    value: Times.MINUTE_1,
     icon: <SprintIcon />,
     view: "1:00",
   },
   {
     key: "5min",
-    value: 300,
+    value: Times.MINUTE_5,
     icon: <EnduranceIcon />,
     view: "5:00",
   },

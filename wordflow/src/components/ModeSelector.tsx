@@ -14,7 +14,7 @@ function ModeSelector({ toggledMode, setToggledMode }: ModeProps) {
                 : "  border-zinc-950"
             }`}
           >
-            {value.charAt(0) + value.toLowerCase().slice(1)}
+            {value}
           </div>
         ))}
       </div>

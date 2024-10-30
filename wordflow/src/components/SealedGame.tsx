@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { SealedProps } from "../interface";
 
 import useFetchWords from "../hooks/useFetchWords";
@@ -14,7 +14,6 @@ function SealedGame({ character, setAppVisible, time }: SealedProps) {
   const [wordlist, setWordList] = useState<string[]>([]);
   const [toggleAlert, setToggleAlert] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
- 
 
   const { wordData } = useFetchWords();
 
@@ -31,7 +30,6 @@ function SealedGame({ character, setAppVisible, time }: SealedProps) {
     setInput(character);
     setScore(0);
     setWordList([]);
-   
   };
 
   const handleSubmit = () => {
@@ -41,9 +39,10 @@ function SealedGame({ character, setAppVisible, time }: SealedProps) {
     setToggleAlert(false);
   };
 
+  // Keyboard inputs
   useEffect(() => {
     const handleKey = (event: KeyboardEvent) => {
-      let key = event.key;
+      const key = event.key;
       if (key === "Backspace") {
         setInput(input.slice(0, -1));
       } else if (key === "Enter") {
@@ -51,7 +50,6 @@ function SealedGame({ character, setAppVisible, time }: SealedProps) {
       } else if (alphabet.includes(key.toUpperCase())) {
         setInput(() => input + key.toUpperCase());
       }
-      console.log(key);
     };
 
     document.addEventListener("keydown", handleKey, true);
@@ -64,7 +62,7 @@ function SealedGame({ character, setAppVisible, time }: SealedProps) {
     <>
       <div className="bg-neutral-900 flex flex-col w-svw h-svh justify-center items-center relative overflow-hidden">
         <CountdownBar secondsLeft={secondsLeft} time={time} />
-        <div className="absolute top-0 flex flex-row w-full justify-evenly">
+        <div className="absolute top-0 flex flex-row w-full justify-evenly p-2">
           <div>{score}</div>
         </div>
 

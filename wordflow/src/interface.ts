@@ -1,25 +1,23 @@
 export enum Mode {
-  DEFAULT = "DEFAULT",
-  DAILY = "DAILY",
+  Default = "Default",
+  Daily = "Daily",
 }
 
 export enum Gamemode {
-  SEALED = "SEALED",
-  LINKED = "LINKED",
+  Sealed = "Sealed",
+  Linked = "Linked",
 }
 
 export enum Times {
-  MIN_1 = 60,
-  MIN_5 = 300,
+  MINUTE_1 = 60,
+  MINUTE_5 = 300,
 }
 
 export interface SealedProps {
   character: string;
   appVisible: boolean;
   setAppVisible: React.Dispatch<React.SetStateAction<boolean>>;
-  gamemode: string;
   time: Times;
-  setTime: React.Dispatch<React.SetStateAction<Times>>;
 }
 
 export interface DefaultConfigProps {
@@ -67,4 +65,9 @@ export interface GameoverProps {
   score: number;
   handleRetry: () => void;
   handleQuit: () => void;
+}
+
+export interface IconProps {
+  width: string;
+  height: string;
 }

@@ -7,28 +7,31 @@ import SealedGame from "../components/SealedGame";
 import Header from "./Header";
 import ModeSelector from "./ModeSelector";
 import { updateLocalStorage } from "../util";
-import LinkedGame from "./LinkedGame";
+import { alphabet } from "../data";
 
 function App() {
   useEffect(() => {
     updateLocalStorage();
   }, []);
 
+  // Must contain uppercase alphabet letter
   const [character, setCharacter] = useState<string>("A");
+
   const [appVisible, setAppVisible] = useState<boolean>(true);
 
   // Account Stats Info Settings
   const [toggledOption, setToggledOption] = useState<number | null>(null);
 
   // Default Daily
-  const [toggledMode, setToggledMode] = useState<Mode>(Mode.DEFAULT);
+  const [toggledMode, setToggledMode] = useState<Mode>(Mode.Default);
 
   // Sealed Linked
-  const [gamemode, setGamemode] = useState<Gamemode>(Gamemode.SEALED);
-  const [time, setTime] = useState<Times>(Times.MIN_1);
+  const [gamemode, setGamemode] = useState<Gamemode>(Gamemode.Sealed);
+
+  const [time, setTime] = useState<Times>(Times.MINUTE_1);
 
   const handleStart = () => {
-    if (gamemode === Gamemode.SEALED) {
+    if (gamemode === Gamemode.Sealed && alphabet.includes(character)) {
       setAppVisible(false);
     }
   };
@@ -36,9 +39,11 @@ function App() {
   return (
     <>
       <div
-        className={`absolute left-0 top-0 bg-neutral-900 h-full w-full flex flex-col justify-center items-center ${
-          appVisible ? "" : "hidden"
-        }`}
+        className={
+          appVisible
+            ? "absolute left-0 top-0 bg-neutral-900 h-full w-full flex flex-col justify-center items-center"
+            : "hidden"
+        }
       >
         <Header
           toggledOption={toggledOption}
@@ -50,7 +55,7 @@ function App() {
           setToggledMode={setToggledMode}
         />
 
-        {toggledMode === Mode.DEFAULT ? (
+        {toggledMode === Mode.Default ? (
           <DefaultConfig
             character={character}
             setCharacter={setCharacter}
@@ -65,22 +70,18 @@ function App() {
           onClick={handleStart}
           className="absolute top-[calc(100%-80px)] bg-zinc-950 w-28 h-16 rounded flex justify-center items-center cursor-pointer"
         >
-          <div className="font-black text-2xl">Start</div>
+          <div className="font-bold text-2xl">Start</div>
         </div>
       </div>
 
-      {!appVisible && gamemode === Gamemode.SEALED ? (
+      {!appVisible && gamemode === Gamemode.Sealed ? (
         <SealedGame
           character={character}
           appVisible={false}
           setAppVisible={setAppVisible}
-          gamemode={gamemode}
           time={time}
-          setTime={setTime}
         />
       ) : null}
-
-      {!appVisible && gamemode === Gamemode.LINKED ? <LinkedGame /> : null}
 
       {toggledOption !== null && optionsData[toggledOption].component}
     </>

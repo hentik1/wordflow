@@ -1,8 +1,10 @@
-function LinkedIcon() {
+import { IconProps } from "../interface";
+
+function LinkedIcon({ width, height }: IconProps) {
   return (
     <svg
-      width="32px"
-      height="32px"
+      width={width}
+      height={height}
       viewBox="0 -1 24 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

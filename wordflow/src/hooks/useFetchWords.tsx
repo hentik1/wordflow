@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 
+// Fetch the txt file in public/100k_words.txt and put it into wordData
 function useFetchWords() {
   const [wordData, setWordData] = useState<string[]>([]);
-  // Fetch the txt file in public/100k_words.txt and put it into wordData
+
   useEffect(() => {
     const fetchFileData = async () => {
       try {
@@ -15,12 +16,13 @@ function useFetchWords() {
         const lines: string[] = data.split("\n").map((line) => line.trim());
         setWordData(lines);
       } catch (error) {
+        console.log(123);
         console.error("Error fetching the file:", error);
       }
     };
+
     fetchFileData();
   }, []);
-
   return { wordData };
 }
 

@@ -24,7 +24,10 @@ function DefaultConfig({
     }
   };
 
-  const gamemodeIcons = [<SealedIcon />, <LinkedIcon />];
+  const gamemodeIcons = [
+    <SealedIcon width="32px" height="32px" />,
+    <LinkedIcon width="32px" height="32px" />,
+  ];
 
   return (
     <div className="h-3/5 flex flex-col justify-start">
@@ -40,24 +43,23 @@ function DefaultConfig({
             }`}
           >
             <div className="relative right-2">{gamemodeIcons[index]}</div>
-            <div className="flex items-center">
-              {value.charAt(0) + value.toLowerCase().slice(1)}
-            </div>
+            <div className="flex items-center">{value}</div>
           </div>
         ))}
       </div>
       <div
         className={
-          gamemode === Gamemode.SEALED
+          gamemode === Gamemode.Sealed
             ? "flex flex-row justify-center"
             : "hidden"
         }
       >
         {timeData.map((item) => (
           <div
-            onClick={() => setTime(item.value as Times)}
+            tabIndex={0}
+            onClick={() => setTime(item.value)}
             key={item.key}
-            className={`cursor-pointer m-4 p-2  rounded-xl text-xl flex flex-row justify-evenly w-28 border-2 bg-zinc-950 ${
+            className={`cursor-pointer m-4 p-2  rounded-xl text-xl flex flex-row justify-evenly w-28 border-2 bg-zinc-950  ${
               time === item.value
                 ? "border-white border-2"
                 : "border-zinc-950 border-2"
@@ -71,7 +73,7 @@ function DefaultConfig({
 
       <div
         className={
-          gamemode === Gamemode.SEALED ? "flex flex-row items-center" : "hidden"
+          gamemode === Gamemode.Sealed ? "flex flex-row items-center" : "hidden"
         }
       >
         <div

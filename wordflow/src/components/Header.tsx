@@ -11,6 +11,7 @@ function Header({ toggledOption, setToggledOption }: HeaderProps) {
     <div className="absolute left-0 top-0 flex justify-center items-center bg-zinc-950 h-16 w-full">
       {optionsData.map((option, index) => (
         <div
+          tabIndex={0}
           onClick={() => handleOption(index)}
           key={option.key}
           className={option.style}

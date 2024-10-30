@@ -15,25 +15,26 @@ function SealedValidation({
   const [alert, setAlert] = useState("");
 
   const [alertVisible, setAlertVisible] = useState(false);
+
+  // Show alert for 2.5 seconds
   const alertVisibility = () => {
     setAlertVisible(true);
     setTimeout(() => {
       setAlertVisible(false);
     }, 2500);
   };
+
   const showAlert = (alert: string) => {
     setAlert(alert);
     alertVisibility();
   };
 
-
-
   function validateLength(word: string) {
     if (word.length < 4) {
       showAlert(alerts.Length);
-      return false;
+      return true;
     }
-    return true;
+    return false;
   }
 
   function findWord(word: string) {
@@ -43,9 +44,9 @@ function SealedValidation({
   function validateStartingCharacter(word: string) {
     if (!word.startsWith(character)) {
       showAlert(alerts.StartingCharacter + character);
-      return false;
+      return true;
     }
-    return true;
+    return false;
   }
 
   function isDuplicate(word: string) {
@@ -57,7 +58,7 @@ function SealedValidation({
   }
 
   function handleSubmit(word: string) {
-    if (!validateLength(word)) {
+    if (validateLength(word)) {
       setInput(character);
       return;
     }
@@ -70,8 +71,7 @@ function SealedValidation({
       setInput(character);
       return;
     }
-
-    if (!validateStartingCharacter(submittedWord)) {
+    if (validateStartingCharacter(submittedWord)) {
       setInput(character);
       return;
     }
@@ -82,7 +82,7 @@ function SealedValidation({
 
     setWordList([...wordlist, submittedWord]);
     setScore(score + 1);
-    setInput(character); // Reset input to starting character
+    setInput(character);
   }
 
   useEffect(() => {
