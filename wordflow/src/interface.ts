@@ -20,6 +20,10 @@ export interface SealedProps {
   time: Times;
 }
 
+export interface LinkedProps {
+  setAppVisible: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 export interface DefaultConfigProps {
   character: string;
   setCharacter: React.Dispatch<React.SetStateAction<string>>;
@@ -29,7 +33,7 @@ export interface DefaultConfigProps {
   setTime: React.Dispatch<React.SetStateAction<Times>>;
 }
 
-export interface ValidationProps {
+export interface SealedValidationProps {
   input: string;
   setInput: React.Dispatch<React.SetStateAction<string>>;
   character: string;
@@ -40,9 +44,14 @@ export interface ValidationProps {
   setScore: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export interface HeaderProps {
-  toggledOption: number | null;
-  setToggledOption: React.Dispatch<React.SetStateAction<number | null>>;
+export interface LinkedValidationProps {
+  input: string;
+  setInput: React.Dispatch<React.SetStateAction<string>>;
+  wordlist: string[];
+  setWordList: React.Dispatch<React.SetStateAction<string[]>>;
+  wordData: string[];
+  score: number;
+  setScore: React.Dispatch<React.SetStateAction<number>>;
 }
 
 export interface ModeProps {

@@ -7,7 +7,7 @@ function useFetchWords() {
   useEffect(() => {
     const fetchFileData = async () => {
       try {
-        const filePath = `${import.meta.env.BASE_URL}100k_words.txt`;
+        const filePath: string = `${import.meta.env.BASE_URL}100k_words.txt`;
         const response = await fetch(filePath);
         if (!response.ok) {
           throw new Error("Network response not ok");

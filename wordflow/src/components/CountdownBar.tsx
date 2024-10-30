@@ -1,14 +1,7 @@
 import { CoundownBarProps } from "../interface";
 
-function CoundownBar({ secondsLeft, time }: CoundownBarProps) {
-  const countdownBarColor = (secondsLeft: number, time: number) => {
-    if ((secondsLeft / time) * 100 > 50) {
-      return "green";
-    } else if ((secondsLeft / time) * 100 > 25) {
-      return "yellow";
-    }
-    return "red";
-  };
+export function CountdownBar({ secondsLeft, time }: CoundownBarProps) {
+  const timeLeft = (secondsLeft / time) * 100;
 
   return (
     <>
@@ -18,8 +11,9 @@ function CoundownBar({ secondsLeft, time }: CoundownBarProps) {
             "border-t-4 absolute top-0 left-0 duration-100 ease-linear"
           }
           style={{
-            width: `${(secondsLeft / time) * 100}%`,
-            borderColor: countdownBarColor(secondsLeft, time),
+            width: timeLeft + "%",
+            borderColor:
+              timeLeft > 50 ? "green" : timeLeft > 25 ? "yellow" : "red",
           }}
         ></div>
       ) : (
@@ -30,5 +24,3 @@ function CoundownBar({ secondsLeft, time }: CoundownBarProps) {
     </>
   );
 }
-
-export default CoundownBar;

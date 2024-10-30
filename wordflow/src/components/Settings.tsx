@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Header from "./Header";
 
 function Settings() {
   const [keyboard, setKeyboard] = useState<boolean>(
@@ -21,6 +22,7 @@ function Settings() {
 
   return (
     <>
+      <Header />
       <div className="flex justify-center items-center flex-col absolute left-0 top-16 w-full h-[calc(100%-64px)] z-50 bg-neutral-900 overflow-hidden">
         <div className="flex flex-row justify-between items-center w-80 p-2 m-2 bg-zinc-950 rounded">
           <div className="text-2xl font-semibold m-2 p-2 flex">Keyboard</div>

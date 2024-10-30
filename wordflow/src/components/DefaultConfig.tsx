@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { DefaultConfigProps, Gamemode, Times } from "../interface";
+import { DefaultConfigProps, Gamemode } from "../interface";
 import { timeData } from "../data";
 import LinkedIcon from "../assets/LinkedIcon";
 import SealedIcon from "../assets/SealedIcon";

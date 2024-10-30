@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
-import { SealedValidationProps } from "../interface";
+import { LinkedValidationProps } from "../interface";
 import { alerts } from "../data";
 
-function SealedValidation({
+function LinkedValidation({
   input,
   setInput,
-  character,
   wordlist,
   setWordList,
   wordData,
   score,
   setScore,
-}: SealedValidationProps) {
+}: LinkedValidationProps) {
   const [alert, setAlert] = useState("");
 
   const [alertVisible, setAlertVisible] = useState(false);
@@ -41,14 +40,6 @@ function SealedValidation({
     return wordData.find((line: string) => line === word.trim());
   }
 
-  function validateStartingCharacter(word: string) {
-    if (!word.startsWith(character)) {
-      showAlert(alerts.StartingCharacter + character);
-      return true;
-    }
-    return false;
-  }
-
   function isDuplicate(word: string) {
     if (wordlist.includes(word)) {
       showAlert(word + alerts.AlreadyFound);
@@ -59,7 +50,7 @@ function SealedValidation({
 
   function handleSubmit(word: string) {
     if (validateLength(word)) {
-      setInput(character);
+      setInput("");
       return;
     }
 
@@ -68,21 +59,18 @@ function SealedValidation({
       const shortendInput =
         word.length >= 16 ? word.substring(0, 16) + ".. " : word;
       showAlert(shortendInput + alerts.NotFound);
-      setInput(character);
+      setInput("");
       return;
     }
-    if (validateStartingCharacter(submittedWord)) {
-      setInput(character);
-      return;
-    }
+
     if (isDuplicate(submittedWord)) {
-      setInput(character);
+      setInput("");
       return;
     }
 
     setWordList([...wordlist, submittedWord]);
     setScore(score + 1);
-    setInput(character);
+    setInput("");
   }
 
   useEffect(() => {
@@ -100,4 +88,4 @@ function SealedValidation({
   );
 }
 
-export default SealedValidation;
+export default LinkedValidation;

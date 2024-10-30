@@ -8,8 +8,9 @@ import Header from "./Header";
 import ModeSelector from "./ModeSelector";
 import { updateLocalStorage } from "../util";
 import { alphabet } from "../data";
+import LinkedGame from "./LinkedGame";
 
-function App() {
+export function App() {
   useEffect(() => {
     updateLocalStorage();
   }, []);
@@ -18,24 +19,25 @@ function App() {
   const [character, setCharacter] = useState<string>("A");
 
   const [appVisible, setAppVisible] = useState<boolean>(true);
-
   // Account Stats Info Settings
   const [toggledOption, setToggledOption] = useState<number | null>(null);
-
   // Default Daily
   const [toggledMode, setToggledMode] = useState<Mode>(Mode.Default);
-
   // Sealed Linked
   const [gamemode, setGamemode] = useState<Gamemode>(Gamemode.Sealed);
-
   const [time, setTime] = useState<Times>(Times.MINUTE_1);
 
   const handleStart = () => {
-    if (gamemode === Gamemode.Sealed && alphabet.includes(character)) {
+    if (alphabet.includes(character)) {
       setAppVisible(false);
     }
   };
 
+  // Endre navn på modeselector modetabs?
+  //appVisible ->  gamesettings
+  //Routing istedebfor usestates
+  //Mer komponenter
+  // Export på topp
   return (
     <>
       <div
@@ -45,16 +47,12 @@ function App() {
             : "hidden"
         }
       >
-        <Header
-          toggledOption={toggledOption}
-          setToggledOption={setToggledOption}
-        />
+        <Header />
 
         <ModeSelector
           toggledMode={toggledMode}
           setToggledMode={setToggledMode}
         />
-
         {toggledMode === Mode.Default ? (
           <DefaultConfig
             character={character}
@@ -65,7 +63,6 @@ function App() {
             setTime={setTime}
           />
         ) : null}
-
         <div
           onClick={handleStart}
           className="absolute top-[calc(100%-80px)] bg-zinc-950 w-28 h-16 rounded flex justify-center items-center cursor-pointer"
@@ -74,18 +71,18 @@ function App() {
         </div>
       </div>
 
-      {!appVisible && gamemode === Gamemode.Sealed ? (
+      {!appVisible && gamemode === Gamemode.Sealed && (
         <SealedGame
           character={character}
           appVisible={false}
           setAppVisible={setAppVisible}
           time={time}
         />
-      ) : null}
+      )}
 
-      {toggledOption !== null && optionsData[toggledOption].component}
+      {!appVisible && gamemode === Gamemode.Linked && (
+        <LinkedGame setAppVisible={setAppVisible} />
+      )}
     </>
   );
 }
-
-export default App;

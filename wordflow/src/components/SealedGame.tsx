@@ -1,9 +1,9 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { SealedProps } from "../interface";
 
 import useFetchWords from "../hooks/useFetchWords";
 import useCountdown from "../hooks/useCountdown";
-import CountdownBar from "./CountdownBar";
+import {CountdownBar} from "./CountdownBar";
 import Keyboard from "./Keyboard";
 import { alphabet } from "../data";
 import Gameover from "./Gameover";

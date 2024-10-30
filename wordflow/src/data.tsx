@@ -9,6 +9,7 @@ import SettingsIcon from "./assets/SettingsIcon";
 import SprintIcon from "./assets/SprintIcon";
 import EnduranceIcon from "./assets/EnduranceIcon";
 import { Times } from "./interface";
+import Logo from "./assets/Logo";
 
 export const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 export const keyboardLayout = ["QWERTYUIOP", "ASDFGHJKL", "1ZXCVBNM2"];
@@ -25,25 +26,26 @@ export const optionsData = [
     key: "Account",
     style: "absolute left-4 cursor-pointer",
     icon: <AccountIcon />,
-    component: <Account />,
   },
   {
     key: "Stats",
     style: "absolute left-16 cursor-pointer",
     icon: <StatsIcon />,
-    component: <Stats />,
+  },
+  {
+    key: "",
+    style: "flex justify-center items-center",
+    icon: <Logo />,
   },
   {
     key: "Info",
     style: "absolute right-16 cursor-pointer",
     icon: <QuestionIcon />,
-    component: <Info />,
   },
   {
     key: "Settings",
     style: "absolute right-4 cursor-pointer",
     icon: <SettingsIcon />,
-    component: <Settings />,
   },
 ];
 
