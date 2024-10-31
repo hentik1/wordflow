@@ -1,7 +1,7 @@
-import { optionsData } from "../data";
 import { Link } from "react-router-dom";
+import { optionsData } from "../../data";
 
-function Header() {
+export function Header() {
   return (
     <div className="absolute left-0 top-0 flex justify-center items-center bg-zinc-950 h-16 w-full">
       {optionsData.map((option) => (
@@ -12,5 +12,3 @@ function Header() {
     </div>
   );
 }
-
-export default Header;

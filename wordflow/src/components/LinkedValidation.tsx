@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { LinkedValidationProps } from "../interface";
 import { alerts } from "../data";
 
-function LinkedValidation({
+export function LinkedValidation({
   input,
   setInput,
   wordlist,
@@ -12,7 +12,6 @@ function LinkedValidation({
   setScore,
 }: LinkedValidationProps) {
   const [alert, setAlert] = useState("");
-
   const [alertVisible, setAlertVisible] = useState(false);
 
   // Show alert for 2.5 seconds
@@ -87,5 +86,3 @@ function LinkedValidation({
     </div>
   );
 }
-
-export default LinkedValidation;

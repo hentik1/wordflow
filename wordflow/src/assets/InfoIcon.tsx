@@ -1,4 +1,4 @@
-function InfoIcon() {
+export function InfoIcon() {
   return (
     <svg
       width="32px"
@@ -34,5 +34,3 @@ function InfoIcon() {
     </svg>
   );
 }
-
-export default InfoIcon;

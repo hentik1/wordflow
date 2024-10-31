@@ -1,6 +1,6 @@
 import { IconProps } from "../interface";
 
-function LinkedIcon({ width, height }: IconProps) {
+export function LinkedIcon({ width, height }: IconProps) {
   return (
     <svg
       width={width}
@@ -33,5 +33,3 @@ function LinkedIcon({ width, height }: IconProps) {
     </svg>
   );
 }
-
-export default LinkedIcon;

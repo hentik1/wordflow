@@ -1,8 +1,10 @@
-function SprintIcon() {
+import { IconProps } from "../interface";
+
+export function SprintIcon({ width, height }: IconProps) {
   return (
     <svg
-      width="32px"
-      height="32px"
+      width={width}
+      height={height}
       viewBox="0 -40 512 512"
       xmlns="http://www.w3.org/2000/svg"
       fill="#000000"
@@ -22,5 +24,3 @@ function SprintIcon() {
     </svg>
   );
 }
-
-export default SprintIcon;

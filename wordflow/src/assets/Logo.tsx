@@ -1,4 +1,4 @@
-function Logo() {
+export function Logo() {
   return (
     <svg
       version="1.0"
@@ -29,5 +29,3 @@ function Logo() {
     </svg>
   );
 }
-
-export default Logo;

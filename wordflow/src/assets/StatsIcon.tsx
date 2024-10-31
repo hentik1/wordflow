@@ -1,4 +1,4 @@
-function StatsIcon() {
+export function StatsIcon() {
   return (
     <svg
       width="32px"
@@ -43,5 +43,3 @@ function StatsIcon() {
     </svg>
   );
 }
-
-export default StatsIcon;

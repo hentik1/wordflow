@@ -9,28 +9,8 @@ export enum Gamemode {
 }
 
 export enum Times {
-  MINUTE_1 = 60,
+  MINUTE_1 = 5,
   MINUTE_5 = 300,
-}
-
-export interface SealedProps {
-  character: string;
-  appVisible: boolean;
-  setAppVisible: React.Dispatch<React.SetStateAction<boolean>>;
-  time: Times;
-}
-
-export interface LinkedProps {
-  setAppVisible: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export interface DefaultConfigProps {
-  character: string;
-  setCharacter: React.Dispatch<React.SetStateAction<string>>;
-  gamemode: string;
-  setGamemode: React.Dispatch<React.SetStateAction<Gamemode>>;
-  time: Times;
-  setTime: React.Dispatch<React.SetStateAction<Times>>;
 }
 
 export interface SealedValidationProps {
@@ -54,9 +34,9 @@ export interface LinkedValidationProps {
   setScore: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export interface ModeProps {
-  toggledMode: Mode;
-  setToggledMode: React.Dispatch<React.SetStateAction<Mode>>;
+export interface ConfigProps {
+  toggledConfig: Mode;
+  setToggledConfig: React.Dispatch<React.SetStateAction<Mode>>;
 }
 
 export interface CoundownBarProps {
@@ -73,10 +53,16 @@ export interface KeyboardProps {
 export interface GameoverProps {
   score: number;
   handleRetry: () => void;
-  handleQuit: () => void;
 }
 
 export interface IconProps {
   width: string;
   height: string;
+}
+
+export interface GameHeaderProps {
+  time: number;
+  secondsLeft: number;
+  score: number;
+  gamemode: string;
 }

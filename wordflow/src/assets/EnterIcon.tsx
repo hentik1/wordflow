@@ -1,4 +1,4 @@
-function EnterIcon() {
+export function EnterIcon() {
   return (
     <svg
       width="32px"
@@ -26,5 +26,3 @@ function EnterIcon() {
     </svg>
   );
 }
-
-export default EnterIcon;

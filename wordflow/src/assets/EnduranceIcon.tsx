@@ -1,9 +1,11 @@
-function EnduranceIcon() {
+import { IconProps } from "../interface";
+
+export function EnduranceIcon({ width, height }: IconProps) {
   return (
     <svg
       fill="#ffffff"
-      width="32px"
-      height="32px"
+      width={width}
+      height={height}
       viewBox="0 0 22 24"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -20,5 +22,3 @@ function EnduranceIcon() {
     </svg>
   );
 }
-
-export default EnduranceIcon;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function useCountdown() {
+export function useCountdown() {
   const [secondsLeft, setSecondsLeft] = useState<number>(999);
 
   useEffect(() => {
@@ -16,11 +16,10 @@ function useCountdown() {
   function start(seconds: number) {
     setSecondsLeft(seconds);
   }
+
   function stop() {
     setSecondsLeft(0);
   }
 
   return { secondsLeft, start, stop };
 }
-
-export default useCountdown;

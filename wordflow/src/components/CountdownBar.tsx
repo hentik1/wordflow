@@ -17,7 +17,7 @@ export function CountdownBar({ secondsLeft, time }: CoundownBarProps) {
           }}
         ></div>
       ) : (
-        <div className={"absolute top-0 left-0 duration-100 ease-linear p-2"}>
+        <div className={"absolute top-0 right-12 duration-100 ease-linear p-2"}>
           {secondsLeft.toFixed(1)}
         </div>
       )}

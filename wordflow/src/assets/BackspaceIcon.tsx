@@ -1,4 +1,4 @@
-function BackspaceIcon() {
+export function BackspaceIcon() {
   return (
     <svg
       width="26px"
@@ -32,5 +32,3 @@ function BackspaceIcon() {
     </svg>
   );
 }
-
-export default BackspaceIcon;

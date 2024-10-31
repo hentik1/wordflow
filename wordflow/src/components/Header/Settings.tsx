@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Header from "./Header";
+import { Header } from "./Header";
 
 function Settings() {
   const [keyboard, setKeyboard] = useState<boolean>(

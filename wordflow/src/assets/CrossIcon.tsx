@@ -1,4 +1,4 @@
-function CrossIcon() {
+export function CrossIcon() {
   return (
     <svg
       width="32px"
@@ -23,5 +23,3 @@ function CrossIcon() {
     </svg>
   );
 }
-
-export default CrossIcon;

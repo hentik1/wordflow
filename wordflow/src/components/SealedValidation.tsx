@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { SealedValidationProps } from "../interface";
 import { alerts } from "../data";
 
-function SealedValidation({
+export function SealedValidation({
   input,
   setInput,
   character,
@@ -13,10 +13,8 @@ function SealedValidation({
   setScore,
 }: SealedValidationProps) {
   const [alert, setAlert] = useState("");
-
   const [alertVisible, setAlertVisible] = useState(false);
 
-  // Show alert for 2.5 seconds
   const alertVisibility = () => {
     setAlertVisible(true);
     setTimeout(() => {
@@ -99,5 +97,3 @@ function SealedValidation({
     </div>
   );
 }
-
-export default SealedValidation;

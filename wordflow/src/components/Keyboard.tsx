@@ -1,7 +1,8 @@
-import { keyboardLayout } from "../data";
-import BackspaceIcon from "../assets/BackspaceIcon";
-import EnterIcon from "../assets/EnterIcon";
+import { alphabet, keyboardLayout } from "../data";
+import { BackspaceIcon } from "../assets/BackspaceIcon";
+import { EnterIcon } from "../assets/EnterIcon";
 import { KeyboardProps } from "../interface";
+import { useEffect } from "react";
 
 function Keyboard({ input, setInput, handleSubmit }: KeyboardProps) {
   const handlePress = (s: string) => {
@@ -17,6 +18,25 @@ function Keyboard({ input, setInput, handleSubmit }: KeyboardProps) {
       setInput(input.slice(0, input.length - 1));
     }
   };
+
+  // Keyboard inputs
+  useEffect(() => {
+    const handleKey = (event: KeyboardEvent) => {
+      const key = event.key;
+      if (key === "Backspace") {
+        setInput(input.slice(0, -1));
+      } else if (key === "Enter") {
+        handleSubmit();
+      } else if (alphabet.includes(key.toUpperCase())) {
+        setInput(() => input + key.toUpperCase());
+      }
+    };
+
+    document.addEventListener("keydown", handleKey, true);
+    return () => {
+      document.removeEventListener("keydown", handleKey, true);
+    };
+  });
 
   return (
     <div

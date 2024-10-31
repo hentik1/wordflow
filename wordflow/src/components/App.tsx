@@ -1,88 +1,39 @@
 import { useEffect, useState } from "react";
-
-import { Gamemode, Mode, Times } from "../interface";
-import { optionsData } from "../data";
-import DefaultConfig from "./DefaultConfig";
-import SealedGame from "../components/SealedGame";
-import Header from "./Header";
-import ModeSelector from "./ModeSelector";
+import { Mode } from "../interface";
+import { DefaultConfig } from "./Config/DefaultConfig";
+import { Config } from "./Config/Config";
 import { updateLocalStorage } from "../util";
-import { alphabet } from "../data";
-import LinkedGame from "./LinkedGame";
+import { Link } from "react-router-dom";
+import { gamemodeAtom } from "../store";
+import { useAtom } from "jotai";
+import { DailyConfig } from "./Config/DailyConfig";
+import { Header } from "./Header/Header";
 
 export function App() {
   useEffect(() => {
     updateLocalStorage();
   }, []);
 
-  // Must contain uppercase alphabet letter
-  const [character, setCharacter] = useState<string>("A");
+  const [toggledConfig, setToggledConfig] = useState<Mode>(Mode.Default);
+  const [gamemode] = useAtom(gamemodeAtom);
 
-  const [appVisible, setAppVisible] = useState<boolean>(true);
-  // Account Stats Info Settings
-  const [toggledOption, setToggledOption] = useState<number | null>(null);
-  // Default Daily
-  const [toggledMode, setToggledMode] = useState<Mode>(Mode.Default);
-  // Sealed Linked
-  const [gamemode, setGamemode] = useState<Gamemode>(Gamemode.Sealed);
-  const [time, setTime] = useState<Times>(Times.MINUTE_1);
-
-  const handleStart = () => {
-    if (alphabet.includes(character)) {
-      setAppVisible(false);
-    }
-  };
-
-  // Endre navn på modeselector modetabs?
-  //appVisible ->  gamesettings
-  //Routing istedebfor usestates
-  //Mer komponenter
-  // Export på topp
+  // trenger ikke arrow func
+  // size
+  // -> Gamestatus
   return (
-    <>
-      <div
-        className={
-          appVisible
-            ? "absolute left-0 top-0 bg-neutral-900 h-full w-full flex flex-col justify-center items-center"
-            : "hidden"
-        }
+    <div className="absolute left-0 top-0 bg-neutral-900 h-full w-full flex flex-col justify-center items-center">
+      <Header />
+      <Config
+        toggledConfig={toggledConfig}
+        setToggledConfig={setToggledConfig}
+      />
+      {toggledConfig === Mode.Default ? <DefaultConfig /> : <DailyConfig />}
+      <Link
+        className="absolute top-[calc(100%-80px)] bg-zinc-950 w-28 h-16 rounded flex justify-center items-center cursor-pointer"
+        to={gamemode}
       >
-        <Header />
-
-        <ModeSelector
-          toggledMode={toggledMode}
-          setToggledMode={setToggledMode}
-        />
-        {toggledMode === Mode.Default ? (
-          <DefaultConfig
-            character={character}
-            setCharacter={setCharacter}
-            gamemode={gamemode}
-            setGamemode={setGamemode}
-            time={time}
-            setTime={setTime}
-          />
-        ) : null}
-        <div
-          onClick={handleStart}
-          className="absolute top-[calc(100%-80px)] bg-zinc-950 w-28 h-16 rounded flex justify-center items-center cursor-pointer"
-        >
-          <div className="font-bold text-2xl">Start</div>
-        </div>
-      </div>
-
-      {!appVisible && gamemode === Gamemode.Sealed && (
-        <SealedGame
-          character={character}
-          appVisible={false}
-          setAppVisible={setAppVisible}
-          time={time}
-        />
-      )}
-
-      {!appVisible && gamemode === Gamemode.Linked && (
-        <LinkedGame setAppVisible={setAppVisible} />
-      )}
-    </>
+        <div className="font-bold text-2xl">Start</div>
+      </Link>
+    </div>
   );
 }

@@ -1,14 +1,14 @@
-import Header from "./Header";
+import { Header } from "./Header";
 
-function Account() {
+function Stats() {
   return (
     <>
       <Header />
       <div className="absolute left-0 top-16 w-full h-[calc(100%-64px)] z-50 bg-neutral-900 overflow-hidden">
-        Account
+        Stats
       </div>
     </>
   );
 }
 
-export default Account;
+export default Stats;

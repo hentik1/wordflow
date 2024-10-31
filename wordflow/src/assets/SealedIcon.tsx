@@ -1,6 +1,6 @@
 import { IconProps } from "../interface";
 
-function SealedIcon({ width, height }: IconProps) {
+export function SealedIcon({ width, height }: IconProps) {
   return (
     <svg
       width={width}
@@ -39,5 +39,3 @@ function SealedIcon({ width, height }: IconProps) {
     </svg>
   );
 }
-
-export default SealedIcon;

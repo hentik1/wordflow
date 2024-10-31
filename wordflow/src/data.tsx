@@ -1,15 +1,11 @@
-import Account from "./components/Account";
-import Stats from "./components/Stats";
-import Info from "./components/Info";
-import Settings from "./components/Settings";
-import AccountIcon from "./assets/AccountIcon";
-import StatsIcon from "./assets/StatsIcon";
-import QuestionIcon from "./assets/QuestionIcon";
-import SettingsIcon from "./assets/SettingsIcon";
-import SprintIcon from "./assets/SprintIcon";
-import EnduranceIcon from "./assets/EnduranceIcon";
+import { AccountIcon } from "./assets/AccountIcon";
+import { StatsIcon } from "./assets/StatsIcon";
+import { InfoIcon } from "./assets/InfoIcon";
+import { SettingsIcon } from "./assets/SettingsIcon";
+import { SprintIcon } from "./assets/SprintIcon";
+import { EnduranceIcon } from "./assets/EnduranceIcon";
 import { Times } from "./interface";
-import Logo from "./assets/Logo";
+import { Logo } from "./assets/Logo";
 
 export const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 export const keyboardLayout = ["QWERTYUIOP", "ASDFGHJKL", "1ZXCVBNM2"];
@@ -23,12 +19,12 @@ export const alerts = {
 
 export const optionsData = [
   {
-    key: "Account",
+    key: "account",
     style: "absolute left-4 cursor-pointer",
     icon: <AccountIcon />,
   },
   {
-    key: "Stats",
+    key: "stats",
     style: "absolute left-16 cursor-pointer",
     icon: <StatsIcon />,
   },
@@ -38,12 +34,12 @@ export const optionsData = [
     icon: <Logo />,
   },
   {
-    key: "Info",
+    key: "info",
     style: "absolute right-16 cursor-pointer",
-    icon: <QuestionIcon />,
+    icon: <InfoIcon />,
   },
   {
-    key: "Settings",
+    key: "settings",
     style: "absolute right-4 cursor-pointer",
     icon: <SettingsIcon />,
   },
@@ -53,13 +49,13 @@ export const timeData = [
   {
     key: "1min",
     value: Times.MINUTE_1,
-    icon: <SprintIcon />,
+    icon: <SprintIcon width="32px" height="32px" />,
     view: "1:00",
   },
   {
     key: "5min",
     value: Times.MINUTE_5,
-    icon: <EnduranceIcon />,
+    icon: <EnduranceIcon width="32px" height="32px" />,
     view: "5:00",
   },
 ];

@@ -3,10 +3,12 @@ import { createRoot } from "react-dom/client";
 import { App } from "./components/App.tsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Settings from "./components/Settings.tsx";
-import Info from "./components/Info.tsx";
-import Stats from "./components/Stats.tsx";
-import Account from "./components/Account.tsx";
+import Settings from "./components/Header/Settings.tsx";
+import Info from "./components/Header/Info.tsx";
+import Stats from "./components/Header/Stats.tsx";
+import Account from "./components/Header/Account.tsx";
+import { SealedGame } from "./components/SealedGame.tsx";
+import LinkedGame from "./components/LinkedGame.tsx";
 
 const router = createBrowserRouter([
   {
@@ -15,20 +17,28 @@ const router = createBrowserRouter([
     errorElement: <div>404 not found</div>,
   },
   {
-    path: "/Settings",
+    path: "settings",
     element: <Settings />,
   },
   {
-    path: "/Info",
+    path: "info",
     element: <Info />,
   },
   {
-    path: "/Stats",
+    path: "stats",
     element: <Stats />,
   },
   {
-    path: "/Account",
+    path: "account",
     element: <Account />,
+  },
+  {
+    path: "sealed",
+    element: <SealedGame />,
+  },
+  {
+    path: "linked",
+    element: <LinkedGame />,
   },
 ]);
 

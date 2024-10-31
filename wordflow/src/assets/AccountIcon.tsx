@@ -1,4 +1,4 @@
-function AccountIcon() {
+export function AccountIcon() {
   return (
     <svg
       width="32px"
@@ -24,5 +24,3 @@ function AccountIcon() {
     </svg>
   );
 }
-
-export default AccountIcon;

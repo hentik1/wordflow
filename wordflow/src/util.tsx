@@ -6,5 +6,3 @@ export const updateLocalStorage = () => {
     localStorage.setItem("visualclock", "true");
   }
 };
-
-

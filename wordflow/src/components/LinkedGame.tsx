@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import Gameover from "./Gameover";
 import Keyboard from "./Keyboard";
-import { LinkedProps } from "../interface";
 import useFetchWords from "../hooks/useFetchWords";
 import { alphabet } from "../data";
 import LinkedValidation from "./LinkedValidation";
+import { Link } from "react-router-dom";
 
-function LinkedGame({ setAppVisible }: LinkedProps) {
+function LinkedGame() {
   const [input, setInput] = useState<string>("");
   const [wordlist, setWordList] = useState<string[]>([]);
   const [toggleAlert, setToggleAlert] = useState<boolean>(false);
@@ -14,10 +14,6 @@ function LinkedGame({ setAppVisible }: LinkedProps) {
   const [hearts, setHearts] = useState<number>(3);
 
   const { wordData } = useFetchWords();
-
-  const handleQuit = () => {
-    setAppVisible(true);
-  };
 
   const handleRetry = () => {
     setScore(0);
@@ -90,21 +86,12 @@ function LinkedGame({ setAppVisible }: LinkedProps) {
           setInput={setInput}
           handleSubmit={handleSubmit}
         />
-        <div
-          onClick={handleQuit}
-          className="mt-16 text-3xl cursor-pointer max-w-64"
-        >
-          Quit
-        </div>
+        <Link to="/">
+          <div className="mt-16 text-3xl cursor-pointer max-w-64">Quit</div>
+        </Link>
       </div>
 
-      {hearts === 0 && (
-        <Gameover
-          score={score}
-          handleRetry={handleRetry}
-          handleQuit={handleQuit}
-        />
-      )}
+      {hearts === 0 && <Gameover score={score} handleRetry={handleRetry} />}
     </>
   );
 }
