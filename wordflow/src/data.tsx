@@ -22,7 +22,7 @@ export const alerts = {
 
 export const optionsData = [
   {
-    key: "",
+    key: "config",
     icon: <Logo />,
   },
   {

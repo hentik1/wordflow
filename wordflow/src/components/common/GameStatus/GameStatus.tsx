@@ -13,9 +13,9 @@ export function GameStatus({ secondsLeft, time, score }: GameStatusProps) {
       {secondsLeft && time && (
         <CountdownBar secondsLeft={secondsLeft} time={time} />
       )}
-      <Link className="absolute top-0 left-0" to="/">
+      <Link className="absolute top-0 left-0" to="/wordflow/">
         <CrossIcon />
-      </Link>
+      </Link> 
       <div className="absolute top-0 left-[calc(50%-8px)] text-lg w-4">
         {score}
       </div>

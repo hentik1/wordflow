@@ -15,7 +15,7 @@ export function LinkedGamemode() {
   const [showAlert, setShowAlert] = useState<boolean>(false);
   const [score, setScore] = useState<number>(0);
   const inputRef = useRef<HTMLInputElement>(null);
-  const [hearts, setHearts] = useState<number>(3);
+  const [hearts] = useState<number>(3);
 
   // Input caret is always visible
   useEffect(() => {

@@ -12,7 +12,7 @@ export function Header() {
               : "border-primary-foreground";
           }}
           key={option.key}
-          to={`/${option.key}`}
+          to={`/wordflow/${option.key}`}
         >
           {option.icon}
         </NavLink>

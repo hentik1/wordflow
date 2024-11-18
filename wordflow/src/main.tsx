@@ -12,39 +12,51 @@ import { App } from "./components/App.tsx";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/wordflow/",
     element: <App />,
     errorElement: (
       <div className="flex flex-col text-3xl">
         404 not found
-        <Link className="underline" to="/">
+        <Link className="underline" to="/wordflow">
           Main page
         </Link>
       </div>
     ),
   },
   {
-    path: "settings",
+    path: "/wordflow/config",
+    element: <App />,
+    errorElement: (
+      <div className="flex flex-col text-3xl">
+        404 not found
+        <Link className="underline" to="/wordflow/">
+          Main page
+        </Link>
+      </div>
+    ),
+  },
+  {
+    path: "/wordflow/settings",
     element: <Settings />,
   },
   {
-    path: "info",
+    path: "/wordflow/info",
     element: <Info />,
   },
   {
-    path: "stats",
+    path: "/wordflow/stats",
     element: <Stats />,
   },
   {
-    path: "account",
+    path: "/wordflow/account",
     element: <Account />,
   },
   {
-    path: "sealed",
+    path: "/wordflow/sealed",
     element: <SealedGamemode />,
   },
   {
-    path: "linked",
+    path: "/wordflow/linked",
     element: <LinkedGamemode />,
   },
 ]);
