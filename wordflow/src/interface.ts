@@ -1,16 +1,17 @@
 export enum Mode {
   Default = "Default",
-  Daily = "Daily",
+  Daily = "Dailuy",
 }
 
 export enum Gamemode {
   Sealed = "Sealed",
   Linked = "Linked",
+  Complete = "Complete",
 }
 
-export enum Times {
-  MINUTE_1 = 5,
-  MINUTE_5 = 300,
+export enum TimeOptions {
+  MINUTE_1 = 60,
+  MINUTE_3 = 180,
 }
 
 export interface SealedValidationProps {
@@ -19,7 +20,7 @@ export interface SealedValidationProps {
   character: string;
   wordlist: string[];
   setWordList: React.Dispatch<React.SetStateAction<string[]>>;
-  wordData: string[];
+  words: string[];
   score: number;
   setScore: React.Dispatch<React.SetStateAction<number>>;
 }
@@ -29,18 +30,13 @@ export interface LinkedValidationProps {
   setInput: React.Dispatch<React.SetStateAction<string>>;
   wordlist: string[];
   setWordList: React.Dispatch<React.SetStateAction<string[]>>;
-  wordData: string[];
+  words: string[];
   score: number;
   setScore: React.Dispatch<React.SetStateAction<number>>;
 }
 
-export interface ConfigProps {
-  toggledConfig: Mode;
-  setToggledConfig: React.Dispatch<React.SetStateAction<Mode>>;
-}
-
 export interface CoundownBarProps {
-  time: number;
+  time?: number;
   secondsLeft: number;
 }
 
@@ -56,13 +52,17 @@ export interface GameoverProps {
 }
 
 export interface IconProps {
-  width: string;
-  height: string;
+  size: string;
 }
 
-export interface GameHeaderProps {
-  time: number;
-  secondsLeft: number;
+export interface GameStatusProps {
+  time?: number;
+  secondsLeft?: number;
   score: number;
   gamemode: string;
+}
+
+export interface SealedWordlistProps {
+  wordlist: string[];
+  input: string;
 }

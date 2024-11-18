@@ -1,18 +1,14 @@
 import { Link } from "react-router-dom";
-import { GameoverProps } from "../interface";
+import { GameoverProps } from "../../interface";
 
 export function Gameover({ score, handleRetry }: GameoverProps) {
   return (
-    <div
-      className={
-        "absolute left-0 top-0 bg-neutral-900 flex flex-col w-screen h-screen justify-center items-center z-50"
-      }
-    >
-      <div className="bg-zinc-950 flex flex-col items-center rounded-xl">
+    <div className="content">
+      <div className="flex flex-col items-center rounded-xl">
         <div className="text-3xl border-b-2 w-full text-center">
           Score {score}
         </div>
-        <div className="flex flex-row">
+        <div className="flex">
           <Link to="/">
             <div className="text-3xl cursor-pointer p-2 m-2">Quit</div>
           </Link>

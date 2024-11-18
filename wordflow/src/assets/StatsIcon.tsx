@@ -4,6 +4,7 @@ export function StatsIcon() {
       width="32px"
       height="32px"
       version="1.1"
+      viewBox="0 -2 26 35"
       xmlns="http://www.w3.org/2000/svg"
       fill="#000000"
     >

@@ -3,7 +3,7 @@ export function AccountIcon() {
     <svg
       width="32px"
       height="32px"
-      viewBox="0 0 48 39"
+      viewBox="0 0 48 43"
       xmlns="http://www.w3.org/2000/svg"
       fill="#ffffff"
     >

@@ -1,14 +1,12 @@
 import { Header } from "./Header";
 
-function Stats() {
+export function Stats() {
   return (
-    <>
+    <div className="content">
       <Header />
-      <div className="absolute left-0 top-16 w-full h-[calc(100%-64px)] z-50 bg-neutral-900 overflow-hidden">
+      <div>
         Stats
       </div>
-    </>
+    </div>
   );
 }
-
-export default Stats;

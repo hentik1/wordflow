@@ -7,8 +7,8 @@ export function useCountdown() {
     if (secondsLeft <= 0) return;
 
     const timeout = setTimeout(() => {
-      setSecondsLeft(secondsLeft - 0.1);
-    }, 100);
+      setSecondsLeft(secondsLeft - 0.01);
+    }, 10);
 
     return () => clearTimeout(timeout);
   }, [secondsLeft]);

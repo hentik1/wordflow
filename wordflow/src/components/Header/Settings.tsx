@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Header } from "./Header";
+import { Switch } from "../../ui/switch";
 
-function Settings() {
+export function Settings() {
   const [keyboard, setKeyboard] = useState<boolean>(
     localStorage.getItem("keyboard") === "true"
   );
@@ -23,40 +24,18 @@ function Settings() {
   return (
     <>
       <Header />
-      <div className="flex justify-center items-center flex-col absolute left-0 top-16 w-full h-[calc(100%-64px)] z-50 bg-neutral-900 overflow-hidden">
-        <div className="flex flex-row justify-between items-center w-80 p-2 m-2 bg-zinc-950 rounded">
-          <div className="text-2xl font-semibold m-2 p-2 flex">Keyboard</div>
-          <div
-            onClick={() => updateKeyboard()}
-            className={`h-12 w-24 p-1 rounded-full flex flex-row" ${
-              keyboard ? "bg-green-600 flex-row-reverse" : "bg-red-600"
-            }`}
-          >
-            <div className="w-10 bg-neutral-900 rounded-full cursor-pointer"></div>
-            <div className="w-10 text-neutral-900 font-black text-xl flex items-center justify-center cursor-pointer">
-              {keyboard ? "ON" : "OFF"}
-            </div>
+      <div className="flex justify-center items-center flex-col absolute left-0 top-16 w-full h-[calc(100%-64px)]">
+        <div className="flex flex-col items-center p-2 m-2 rounded text-xl">
+          <div className="flex flex-row justify-between w-42 m-2 text-center">
+            <div className="w-32">Keyboard</div>
+            <Switch checked={keyboard} onClick={() => updateKeyboard()} />
           </div>
-        </div>
-        <div className="flex flex-row justify-between items-center w-80 p-2 m-2 bg-zinc-950 rounded">
-          <div className="text-2xl font-semibold m-2 p-2 flex">
-            Visual Clock
-          </div>
-          <div
-            onClick={() => updateVisualClock()}
-            className={`h-12 w-24 p-1 rounded-full flex flex-row" ${
-              visualClock ? "bg-green-600 flex-row-reverse" : "bg-red-600"
-            }`}
-          >
-            <div className="w-10 bg-neutral-900 rounded-full cursor-pointer"></div>
-            <div className="w-10 text-neutral-900 font-black text-xl flex items-center justify-center cursor-pointer">
-              {visualClock ? "ON" : "OFF"}
-            </div>
+          <div className="flex flex-row justify-between w-42 m-2 text-center">
+            <div className="w-32">Visual Clock</div>
+            <Switch checked={visualClock} onClick={() => updateVisualClock()} />
           </div>
         </div>
       </div>
     </>
   );
 }
-
-export default Settings;

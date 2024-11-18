@@ -17,14 +17,14 @@ export function TimeSelector() {
         <div
           onClick={() => setTime(item.value)}
           key={item.key}
-          className={`cursor-pointer m-4 p-2  rounded-xl text-xl flex flex-row justify-evenly w-28 border-2 bg-zinc-950  ${
+          className={`cursor-pointer m-4 p-2  rounded-xl text-xl flex flex-row justify-evenly w-28 border-2 border-secondary ${
             time === item.value
-              ? "border-white border-2"
-              : "border-zinc-950 border-2"
+              ? "bg-secondary"
+              : "hover:bg-secondary duration-200"
           }`}
         >
           <div className="relative right-2">{item.icon}</div>
-          <div className="flex items-center">{item.view}</div>
+          <div className="flex items-center">{item.text}</div>
         </div>
       ))}
     </div>

@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { LinkedValidationProps } from "../interface";
-import { alerts } from "../data";
+import { LinkedValidationProps } from "../../interface";
+import { alerts } from "../../data";
 
 export function LinkedValidation({
   input,
   setInput,
   wordlist,
   setWordList,
-  wordData,
+  words,
   score,
   setScore,
 }: LinkedValidationProps) {
@@ -36,7 +36,7 @@ export function LinkedValidation({
   }
 
   function findWord(word: string) {
-    return wordData.find((line: string) => line === word.trim());
+    return words.find((line: string) => line === word.trim());
   }
 
   function isDuplicate(word: string) {

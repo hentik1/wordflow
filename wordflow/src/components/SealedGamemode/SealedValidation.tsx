@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { SealedValidationProps } from "../interface";
-import { alerts } from "../data";
+import { SealedValidationProps } from "../../interface";
+import { alerts } from "../../data";
 
 export function SealedValidation({
   input,
@@ -8,24 +8,28 @@ export function SealedValidation({
   character,
   wordlist,
   setWordList,
-  wordData,
+  words,
   score,
   setScore,
 }: SealedValidationProps) {
   const [alert, setAlert] = useState("");
   const [alertVisible, setAlertVisible] = useState(false);
 
-  const alertVisibility = () => {
+  function alertVisibility() {
     setAlertVisible(true);
     setTimeout(() => {
       setAlertVisible(false);
     }, 2500);
-  };
+  }
 
-  const showAlert = (alert: string) => {
+  function showAlert(alert: string) {
     setAlert(alert);
     alertVisibility();
-  };
+  }
+
+  function findWord(word: string) {
+    return words.includes(word) ? word : null;
+  }
 
   function validateLength(word: string) {
     if (word.length < 4) {
@@ -33,10 +37,6 @@ export function SealedValidation({
       return true;
     }
     return false;
-  }
-
-  function findWord(word: string) {
-    return wordData.find((line: string) => line === word.trim());
   }
 
   function validateStartingCharacter(word: string) {
@@ -89,9 +89,9 @@ export function SealedValidation({
 
   return (
     <div
-      className={`absolute top-44 bg-black p-2 rounded ${
-        alertVisible ? "" : "hidden"
-      }`}
+      className={
+        alertVisible ? "absolute top-44 bg-black p-2 rounded" : "hidden"
+      }
     >
       {alert}
     </div>

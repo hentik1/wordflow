@@ -1,20 +1,27 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { App } from "./components/App.tsx";
+import { createBrowserRouter, Link, RouterProvider } from "react-router-dom";
 import "./index.css";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Settings from "./components/Header/Settings.tsx";
-import Info from "./components/Header/Info.tsx";
-import Stats from "./components/Header/Stats.tsx";
-import Account from "./components/Header/Account.tsx";
-import { SealedGame } from "./components/SealedGame.tsx";
-import LinkedGame from "./components/LinkedGame.tsx";
+import { Settings } from "./components/Header/Settings.tsx";
+import { Info } from "./components/Header/Info.tsx";
+import { Stats } from "./components/Header/Stats.tsx";
+import { Account } from "./components/Header/Account.tsx";
+import { LinkedGamemode } from "./components/LinkedGamemode/LinkedGamemode.tsx";
+import { SealedGamemode } from "./components/SealedGamemode/SealedGamemode.tsx";
+import { App } from "./components/App.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <div>404 not found</div>,
+    errorElement: (
+      <div className="flex flex-col text-3xl">
+        404 not found
+        <Link className="underline" to="/">
+          Main page
+        </Link>
+      </div>
+    ),
   },
   {
     path: "settings",
@@ -34,11 +41,11 @@ const router = createBrowserRouter([
   },
   {
     path: "sealed",
-    element: <SealedGame />,
+    element: <SealedGamemode />,
   },
   {
     path: "linked",
-    element: <LinkedGame />,
+    element: <LinkedGamemode />,
   },
 ]);
 

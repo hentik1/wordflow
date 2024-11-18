@@ -1,10 +1,10 @@
 import { IconProps } from "../interface";
 
-export function SprintIcon({ width, height }: IconProps) {
+export function SprintIcon({ size }: IconProps) {
   return (
     <svg
-      width={width}
-      height={height}
+      width={size}
+      height={size}
       viewBox="0 -40 512 512"
       xmlns="http://www.w3.org/2000/svg"
       fill="#000000"

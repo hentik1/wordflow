@@ -27,7 +27,7 @@ export function AlphabetScroller() {
     >
       <div
         onClick={() => scroll("left")}
-        className="text-xl bg-zinc-950 h-12 w-6 rounded flex justify-center items-center m-1 mb-3.5 cursor-pointer font-bold"
+        className="text-xl h-12 w-6 rounded flex justify-center items-center m-1 mb-3.5 cursor-pointer font-bold"
       >
         <div>{"<"}</div>
       </div>
@@ -37,8 +37,10 @@ export function AlphabetScroller() {
       >
         {alphabet.split("").map((char, index) => (
           <div
-            className={`bg-zinc-950 font-bold cursor-pointer min-w-12 h-12 flex items-center justify-center m-1 text-white rounded ${
-              alphabet[index] === character ? "border-2" : "border-0"
+            className={`font-bold cursor-pointer min-w-12 h-12 flex items-center justify-center m-1 rounded-full border-2 border-secondary ${
+              alphabet[index] === character
+                ? "bg-secondary"
+                : "hover:bg-secondary duration-200"
             }`}
             key={index}
             onClick={() => setCharacter(alphabet[index])}
